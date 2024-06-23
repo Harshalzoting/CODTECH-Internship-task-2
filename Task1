@@ -1,0 +1,85 @@
+import re
+import tkinter as tk
+from tkinter import messagebox
+
+# List of common passwords (could be extended)
+common_passwords = [
+    "123456", "password", "123456789", "12345678", "12345",
+    "1234567", "1234567890", "qwerty", "abc123", "password1","passcode","987654321","7654321"
+]
+
+def assess_password_strength(password):
+    score = 0
+    feedback = []
+    
+    # Check length
+    length = len(password)
+    if length >= 8:
+        score += 1
+    if length >= 12:
+        score += 1
+    if length >= 16:
+        score += 1
+
+    # Check complexity
+    if re.search(r'[a-z]', password):
+        score += 1
+    if re.search(r'[A-Z]', password):
+        score += 1
+    if re.search(r'[0-9]', password):
+        score += 1
+    if re.search(r'[\W_]', password):  # Checks for special characters
+        score += 1
+
+    # Check uniqueness
+    if password not in common_passwords:
+        score += 1
+
+    # Provide feedback
+    if length < 8:
+        feedback.append("Password is too short. Consider using at least 9 characters.")
+    if not re.search(r'[a-z]', password):
+        feedback.append("Consider adding lowercase letters to increase complexity.")
+    if not re.search(r'[A-Z]', password):
+        feedback.append("Consider adding uppercase letters to increase complexity.")
+    if not re.search(r'[0-9]', password):
+        feedback.append("Consider adding numbers to increase complexity.")
+    if not re.search(r'[\W_]', password):
+        feedback.append("Consider adding special characters (e.g., !, @, #, $) to increase complexity.")
+    if password in common_passwords:
+        feedback.append("Your password is too common. Choose a more unique password.")
+
+    strength = "Weak"
+    if score >= 5:
+        strength = "Moderate"
+    if score >= 8:
+        strength = "Strong"
+    
+    return {
+        "score": score,
+        "strength": strength,
+        "feedback": feedback
+    }
+
+def check_password():
+    password = entry.get()
+    result = assess_password_strength(password)
+    feedback_message = "\n".join(result["feedback"])
+    messagebox.showinfo("Password Strength", f"Password Strength: {result['strength']}\n\nFeedback:\n{feedback_message}")
+
+# Set up the Tkinter GUI
+root = tk.Tk()
+root.title("Password Strength Checker")
+root.geometry("500x500")
+#root.configure(bg="a") "for background  color"
+
+label = tk.Label(root, text="Enter a password to assess its strength:", font=('Helvetica',15,'bold'),fg="Black")
+label.pack(pady=10)
+
+entry = tk.Entry(root, show="", width=30, font=("poppins",15)) #if you want to hide the passcode use * in show ex.show="*"
+entry.pack(pady=10)
+
+button = tk.Button(root, text="Check Password",font=('Helvetica',15,'bold'),fg="Black",command=check_password)
+button.pack(pady=10)
+
+root.mainloop()
