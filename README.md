@@ -10,6 +10,7 @@ Duration:June to July 2024
 
 
 Overview of the Vulnerability Scanning Tool
+
 This Python-based vulnerability scanning tool is designed to perform basic security checks on a network or website. It scans for common security vulnerabilities, including open ports, outdated software versions, and misconfigurations. The tool leverages Python's standard libraries and a few additional ones to provide a simple yet effective way to identify potential security issues.
 
 Key Features
