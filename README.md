@@ -14,6 +14,7 @@ Overview of the Vulnerability Scanning Tool
 This Python-based vulnerability scanning tool is designed to perform basic security checks on a network or website. It scans for common security vulnerabilities, including open ports, outdated software versions, and misconfigurations. The tool leverages Python's standard libraries and a few additional ones to provide a simple yet effective way to identify potential security issues.
 
 Key Features
+
 Port Scanning:
 The tool scans a list of common ports on a specified host to check if they are open. Open ports can indicate potential entry points for attackers.
 
@@ -35,6 +36,7 @@ Website Security Check:
 The check_website_security function sends an HTTP GET request to the specified URL using the requests library. It then checks the response headers for the presence of common security headers.
 
 Usage
+
 When you run the script, it prompts you to enter the target host (e.g., a domain name or IP address).
 It then scans the target for open ports, checks for outdated software, and examines the website's security headers.
 The results are displayed on the console, providing a quick overview of potential security issues.
