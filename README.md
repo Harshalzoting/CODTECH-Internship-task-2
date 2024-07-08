@@ -42,5 +42,7 @@ It then scans the target for open ports, checks for outdated software, and exami
 The results are displayed on the console, providing a quick overview of potential security issues.
 
 **Screenshot**:
-![image](https://github.com/Harshal11zero/CODTECH-Internship-task-2/assets/173193602/817f14f9-5fe5-4117-bd93-f93f6c9e4b51)
+
+![image](https://github.com/Harshal11zero/CODTECH-Internship-task-2/assets/173193602/56f2d4d8-2e19-4e5f-896d-e270f0ea99cc)
+
 
